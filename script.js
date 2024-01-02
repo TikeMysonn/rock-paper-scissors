@@ -66,7 +66,7 @@ document.body.appendChild(result);
 
 const score = document.querySelector("#score");
 function updateScore() {
-  score.innerHTML = `Your Score: ${yourScore}<br> <br> Computer Score: ${compScore}`;
+  score.innerHTML = `Your Score:  ${yourScore}<br> <br> Computer Score:  ${compScore}`;
 }
 updateScore();
 function checkScore(yourScore, compScore) {
