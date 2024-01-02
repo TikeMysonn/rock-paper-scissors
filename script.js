@@ -14,24 +14,24 @@ function playRound(playerSelection, computerSelection) {
   playerSelection = input[0].toUpperCase() + input.slice(1).toLowerCase();
 
   if (playerSelection == computerSelection) {
-    result.innerHTML = `Result: You selected ${playerSelection}, Computer selected ${computerSelection}, it's a Tie! Try again!`;
+    result.innerHTML = ` DRAW! You selected ${playerSelection}, Computer selected ${computerSelection}, Try again!`;
   } else if (computerChoice == "Paper" && playerSelection == "Rock") {
-    result.innerHTML = `Result: Computer chose ${computerSelection}, you Lose!`;
+    result.innerHTML = `  Computer chose ${computerSelection}, you Lose!`;
     compScore++;
   } else if (computerChoice == "Scissors" && playerSelection == "Rock") {
-    result.innerHTML = `Result: Computer chose ${computerSelection}, you Win!`;
+    result.innerHTML = `  Computer chose ${computerSelection}, you Win!`;
     yourScore++;
   } else if (computerChoice == "Rock" && playerSelection == "Paper") {
-    result.innerHTML = `Result: Computer chose ${computerSelection}, you Win!`;
+    result.innerHTML = `  Computer chose ${computerSelection}, you Win!`;
     yourScore++;
   } else if (computerChoice == "Scissors" && playerSelection == "Paper") {
-    result.innerHTML = `Result: Computer chose ${computerSelection}, you Lose!`;
+    result.innerHTML = `  Computer chose ${computerSelection}, you Lose!`;
     compScore++;
   } else if (computerChoice == "Paper" && playerSelection == "Scissors") {
-    result.innerHTML = `Result: Computer chose ${computerSelection} so you Win!`;
+    result.innerHTML = `  Computer chose ${computerSelection} so you Win!`;
     yourScore++;
   } else if (computerChoice == "Rock" && playerSelection == "Scissors") {
-    result.innerHTML = `Result: Computer chose ${computerSelection}, you Lose!`;
+    result.innerHTML = `  Computer chose ${computerSelection}, you Lose!`;
     compScore++;
   }
   return yourScore, compScore;
@@ -61,19 +61,28 @@ scissorsBtn.addEventListener("click", function () {
 
 const result = document.createElement("div");
 result.style.cssText =
-  "position: absolute; width: 250px; height: 100px; z-index:100; background: lightgreen; margin: 50px";
+  "position: absolute; width: 250px; height: 100px; z-index:100; background: lightgrey; margin: 0px";
 document.body.appendChild(result);
 
 const score = document.querySelector("#score");
 function updateScore() {
-  score.innerHTML = `Your Score: ${yourScore}<br> Computer Score: ${compScore}`;
+  score.innerHTML = `Your Score: ${yourScore}<br> <br> Computer Score: ${compScore}`;
 }
 updateScore();
 function checkScore(yourScore, compScore) {
   if (yourScore == 5) {
     alert("You Win");
+    resetGame();
   } else if (compScore == 5) {
     alert("You lose");
+    resetGame();
   }
   return yourScore, compScore;
+}
+
+function resetGame() {
+  yourScore = 0;
+  compScore = 0;
+  result.innerHTML = "";
+  updateScore();
 }
